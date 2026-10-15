@@ -17,4 +17,5 @@ v14,"Oct 9, 11:16 AM","Oct 9, 12:40 PM",0.06,60,52.12,"Fixes a few small bugs, r
 v14.1,"Oct 9, 12:40 PM","Oct 11, 2:13 PM",2.06,60,41.39,Changes only when the rewards test pulls its orders.,1015,2097,1.44,3.90,0.00,5.34,2.59,6.2,0.25
 v14.2,"Oct 11, 2:13 PM","Oct 12, 2:37 PM",1.02,60,44.68,Adds safety rules to the rewards test.,542,1160,5.31,1.88,0.00,7.19,7.07,15.8,0.62
 v14.3,"Oct 12, 2:37 PM","Oct 12, 3:13 PM",0.03,60,33.99,Runs the rewards test on one market at a time.,65,126,0.10,0.29,0.00,0.39,15.57,45.8,0.31
-v14.4,"Oct 12, 3:13 PM","Oct 14, 11:00 AM",1.37,60,35.94,Keeps the rewards test's orders in place without gaps.,679,1361,-8.51,2.25,0.00,-6.26,-4.59,-12.8,-0.46
+v14.4,"Oct 12, 3:13 PM","Oct 14, 11:00 AM",1.82,60,37.46,Keeps the rewards test's orders in place without gaps.,839,1666,-3.81,2.80,0.00,-1.01,-0.56,-1.5,-0.06
+v14.5,"Oct 14, 11:00 AM",now,0.54,60,30.62,Goes back to the v12 trading rules (the v14 trading changes measured worse) and runs the rewards test at full size overnight.,247,511,-1.45,0.94,0.00,-0.51,-0.94,-3.1,-0.10
