@@ -18,4 +18,4 @@ v14.1,"Oct 9, 12:40 PM","Oct 11, 2:13 PM",2.06,60,41.39,Changes only when the re
 v14.2,"Oct 11, 2:13 PM","Oct 12, 2:37 PM",1.02,60,44.68,Adds safety rules to the rewards test.,542,1160,5.31,1.88,0.00,7.19,7.07,15.8,0.62
 v14.3,"Oct 12, 2:37 PM","Oct 12, 3:13 PM",0.03,60,33.99,Runs the rewards test on one market at a time.,65,126,0.10,0.29,0.00,0.39,15.57,45.8,0.31
 v14.4,"Oct 12, 3:13 PM","Oct 14, 11:00 AM",1.82,60,37.46,Keeps the rewards test's orders in place without gaps.,839,1666,-3.81,2.80,0.00,-1.01,-0.56,-1.5,-0.06
-v12.2,"Oct 16, 4:00 AM",now,0.83,60,20.34,"Stops trading Series E, which lost money on trading in both halves of the record. The overnight rewards test now only uses same-day markets.",178,359,0.58,0.26,0.00,0.84,1.00,4.9,0.23
+v12.2,"Oct 16, 4:00 AM","Oct 18, 11:34 AM",1.83,60,27.06,"Stops trading Series E, which lost money on trading in both halves of the record. The overnight rewards test now only uses same-day markets.",552,1075,-4.30,1.35,0.00,-2.95,-1.61,-6.0,-0.27
