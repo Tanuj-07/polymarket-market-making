@@ -1,12 +1,12 @@
 # prediction-market-making
 
-This was a market-making bot that traded on Polymarket US with real money. It ran from September 5 to October 18, 2026, and it used Kalshi's prices for the same markets as its fair value.
+This is a market-making bot that trades on Polymarket US with real money. It has been running since September 5, 2026, and it uses Kalshi's prices for the same markets as its fair value.
 
-It traded the daily high-temperature markets. Each city gets one market a day, split into brackets a couple of degrees wide, and the bracket that holds the day's high pays $1. The bot traded New York, Miami, Chicago, Los Angeles and San Francisco, and only Los Angeles on its last day.
+It trades the daily high-temperature markets. Each city gets one market a day, split into brackets a couple of degrees wide, and the bracket that holds the day's high pays $1. The bot traded New York, Miami, Chicago, Los Angeles and San Francisco. Since October 18 it trades Los Angeles only.
 
-The repository has no code, only the results. The bot was stopped on October 18 (see below). The results update at noon ET until its last positions settle, and then they're final.
+The repository has no code, only the results. **They update automatically every day at noon ET**, once the previous day's markets have settled, so everything here is current through yesterday.
 
-Last update: October 18, 2026, 4:36 PM ET (43 days, September 5 to October 17).
+Last update: October 18, 2026, 12:05 PM ET (43 days, September 5 to October 17).
 
 ## Returns
 
@@ -37,7 +37,7 @@ Where it came from:
 
 ![Capital: the cap and what the bot used](charts/capital.svg)
 
-## Why the bot stopped
+## The rebate is ending, so the bot trades Los Angeles only
 
 Polymarket US changed its fee schedule. From October 19, makers that trade less than $10 million a month no longer get a maker rebate. This bot is far below that line, so its rebate goes to zero.
 
@@ -60,13 +60,9 @@ Settled trade days from September 5 to October 17. Daily swing is the standard d
 
 Los Angeles made more on its own than all five cities together, with less daily swing. San Francisco lost money on trading in both halves of the record and was dropped on October 16.
 
-On October 18 the bot switched to Los Angeles only. That afternoon I stopped it, and it closed out what it still held.
+From October 18 the bot trades Los Angeles only. New York, Miami and Chicago only close out the positions they already hold. The capital cap drops from $60 to $20, and nothing else changes. Order size may go up later, slowly, and only if the results hold at each step.
 
-Without the rebate, Los Angeles was the only place it made money, and even there the edge was small. Trading alone averaged +$0.63 a day over the whole record, and the last seven days lost $2.98. That's too close to zero to tell apart from luck.
-
-On the last afternoon, the Los Angeles temperature moved into a new bracket. In the same second, a better-informed buyer filled both of the bot's quotes around it. That cost about $1.60, a few days of expected profit. Losses like that are the main risk in this strategy. Smaller orders make them smaller, but they don't stop them.
-
-At this size the expected profit was a few dollars a month. It wasn't worth keeping it running.
+This is a small operation and it will stay small. In Los Angeles, trading alone has averaged +$0.63 a day. Bigger orders don't buy much more volume, because the bot only gets filled when it holds the best price, and most of the time someone else does. Bigger resting orders also mean bigger hits from better-informed buyers.
 
 The liquidity rewards don't change this. An overnight test aimed at them paid $0.21 for the night, so it was switched off.
 
@@ -95,7 +91,7 @@ Outside events that changed the economics. They are the purple lines on the char
 | Sep 22 | Switched to collecting Polymarket's maker rebate on qualifying fills. |
 | Sep 23 | Polymarket cut the liquidity reward pool for these markets by 75%. The bot has rarely qualified since. |
 | Oct 9 | Started testing a way to qualify for liquidity rewards again, beginning with tiny orders. |
-| Oct 18 | Switched to Los Angeles only, then stopped the bot that afternoon. Polymarket's maker rebate for small makers ends the next day. |
+| Oct 18 | Switched to trading Los Angeles only, the day before Polymarket's maker rebate ends for small makers. |
 
 ## Charts
 
@@ -203,5 +199,5 @@ Each city is one daily market on that day's high temperature. These totals inclu
 - The raw data is in [`data/daily.csv`](data/daily.csv), [`data/versions.csv`](data/versions.csv) and [`data/series.csv`](data/series.csv).
 - P&L is booked to the day each trade happened and valued at the official settlement price. Taker fees count against trading. Liquidity rewards are paid per market day, so they're booked to that day. Each day appears the morning after, once it has settled.
 - Returns are measured against the capital the bot actually had in use, not the cap. That is the money in open positions plus resting orders, each order counted at what it would cost if it filled, averaged over the hours the bot was running each day. Most mornings it comes within a few dollars of the cap, until the previous day's markets settle. The cap is $20 now, and the rest of the account sits idle.
-- Each update is checked against the actual account balance before it's published. The last check was off by $0.03, which comes from open positions and rounding.
+- Each update is checked against the actual account balance before it's published. The last check was off by $0.01, which comes from open positions and rounding.
 - This repository doesn't contain any code, keys, order data or strategy settings.
