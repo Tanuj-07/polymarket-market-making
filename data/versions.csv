@@ -1,21 +1,21 @@
 version,live_from_et,live_to_et,days,capital_cap_usd,capital_in_use_avg_usd,change,fills,contracts,trading_usd,maker_rebates_usd,liquidity_rewards_usd,net_usd,net_per_day_usd,net_per_day_pct_of_capital_in_use,net_per_contract_cents
-v00,"Sep 5, 11:34 AM","Sep 11, 2:33 AM",5.62,20,13.07,First version: a $20 test run that quotes both sides of every bracket off Kalshi prices.,1817,1709,-0.48,0.00,7.61,7.13,1.27,9.7,0.42
-v01,"Sep 11, 2:33 AM","Sep 12, 9:28 PM",1.79,20,14.66,Joins the queue at the best price and goes after the liquidity rewards.,1282,1200,4.56,0.00,0.00,4.56,2.55,17.4,0.38
-v02,"Sep 12, 9:28 PM","Sep 13, 1:39 AM",0.17,20,17.03,"Detects exchange halts and settled markets, and reports its safety limits to the monitor.",88,91,0.55,0.00,0.00,0.55,3.19,18.7,0.61
-v03,"Sep 13, 1:39 AM","Sep 14, 8:03 PM",1.77,20,15.33,Waits for fill confirmation before taking on more risk (added after an exchange data outage).,926,863,5.35,0.00,0.00,5.35,3.03,19.7,0.62
-v04,"Sep 14, 8:03 PM","Sep 15, 4:04 AM",0.33,20,17.86,Combines the fixes above into a single build.,94,87,-5.58,0.00,0.00,-5.58,-16.70,-93.5,-6.44
-v05,"Sep 15, 4:04 AM","Sep 15, 3:48 PM",0.49,40,27.03,Raises the cap to $40 to cover more markets at the same order size.,550,504,-0.72,0.00,0.00,-0.72,-1.47,-5.4,-0.14
-v06,"Sep 15, 3:48 PM","Sep 21, 6:08 PM",6.10,40,28.00,Pulls resting quotes as soon as Kalshi moves.,4072,3961,7.65,0.00,1.26,8.91,1.46,5.2,0.22
-v07,"Sep 21, 6:08 PM","Sep 22, 10:11 AM",0.67,40,33.14,"Restarts the bot as a long-running service, with no logic changes.",370,359,-2.79,0.00,0.00,-2.79,-4.17,-12.6,-0.78
-v08,"Sep 22, 10:11 AM","Sep 24, 4:07 AM",1.75,60,52.13,Uses larger orders and raises the cap to $60.,1485,2440,4.63,3.96,2.49,11.08,6.34,12.2,0.45
-v09,"Sep 24, 4:07 AM","Sep 29, 8:51 AM",5.20,60,52.83,Adds a soft stop that winds positions down after a losing stretch.,3122,5569,-8.99,9.77,0.00,0.78,0.15,0.3,0.01
-v10,"Sep 29, 8:51 AM","Oct 1, 10:16 AM",2.06,60,52.98,Uses larger orders again.,1186,2799,-2.62,5.76,0.00,3.14,1.52,2.9,0.11
-v11,"Oct 1, 10:16 AM","Oct 2, 9:32 AM",0.97,60,54.86,"Drops an outside model input, so fair value comes from Kalshi alone.",548,1328,3.08,2.45,0.00,5.53,5.71,10.4,0.42
-v12,"Oct 2, 9:32 AM","Oct 4, 7:00 PM",2.39,60,42.24,"Quotes only same-day markets, so nothing is held overnight.",1622,3605,11.37,7.14,0.00,18.51,7.73,18.3,0.51
-v12.1,"Oct 4, 7:00 PM; again Oct 14, 11:00 AM","Oct 16, 4:00 AM",6.39,60,38.04,"Adds a small safety fix for wind-downs. Back in use from Oct 14 to Oct 16, after the v14 trading changes measured worse, with the rewards test running at full size overnight.",3146,6683,-1.52,11.87,0.00,10.35,1.62,4.3,0.15
-v14,"Oct 9, 11:16 AM","Oct 9, 12:40 PM",0.06,60,52.12,"Fixes a few small bugs, reads prices faster, and starts a small test of a way back into the liquidity rewards.",100,201,-5.55,0.48,0.00,-5.07,-86.71,-166.4,-2.53
-v14.1,"Oct 9, 12:40 PM","Oct 11, 2:13 PM",2.06,60,41.39,Changes only when the rewards test pulls its orders.,1015,2097,1.44,3.90,0.00,5.34,2.59,6.2,0.25
-v14.2,"Oct 11, 2:13 PM","Oct 12, 2:37 PM",1.02,60,44.68,Adds safety rules to the rewards test.,542,1160,5.31,1.88,0.00,7.19,7.07,15.8,0.62
-v14.3,"Oct 12, 2:37 PM","Oct 12, 3:13 PM",0.03,60,33.99,Runs the rewards test on one market at a time.,65,126,0.10,0.29,0.00,0.39,15.57,45.8,0.31
-v14.4,"Oct 12, 3:13 PM","Oct 14, 11:00 AM",1.82,60,37.46,Keeps the rewards test's orders in place without gaps.,839,1666,-3.81,2.80,0.00,-1.01,-0.56,-1.5,-0.06
-v12.2,"Oct 16, 4:00 AM","Oct 18, 11:34 AM",1.83,60,27.06,"Stops trading Series E, which lost money on trading in both halves of the record. The overnight rewards test now only uses same-day markets.",552,1075,-4.30,1.35,0.00,-2.95,-1.61,-6.0,-0.27
+v1.0,"Sep 5, 11:34 AM","Sep 11, 2:33 AM",5.62,20,13.07,First version: a $20 test run that quotes both sides of every bracket off Kalshi prices.,1817,1709,-0.48,0.00,7.61,7.13,1.27,9.7,0.42
+v1.1,"Sep 11, 2:33 AM","Sep 12, 9:28 PM",1.79,20,14.66,Joins the queue at the best price and goes after the liquidity rewards.,1282,1200,4.56,0.00,0.00,4.56,2.55,17.4,0.38
+v1.2,"Sep 12, 9:28 PM","Sep 13, 1:39 AM",0.17,20,17.03,"Detects exchange halts and settled markets, and reports its safety limits to the monitor.",88,91,0.55,0.00,0.00,0.55,3.19,18.7,0.61
+v1.3,"Sep 13, 1:39 AM","Sep 14, 8:03 PM",1.77,20,15.33,Waits for fill confirmation before taking on more risk (added after an exchange data outage).,926,863,5.35,0.00,0.00,5.35,3.03,19.7,0.62
+v1.4,"Sep 14, 8:03 PM","Sep 15, 4:04 AM",0.33,20,17.86,Combines the fixes above into a single build.,94,87,-5.58,0.00,0.00,-5.58,-16.70,-93.5,-6.44
+v1.5,"Sep 15, 4:04 AM","Sep 15, 3:48 PM",0.49,40,27.03,Raises the cap to $40 to cover more markets at the same order size.,550,504,-0.72,0.00,0.00,-0.72,-1.47,-5.4,-0.14
+v1.6,"Sep 15, 3:48 PM","Sep 21, 6:08 PM",6.10,40,28.00,Pulls resting quotes as soon as Kalshi moves.,4072,3961,7.65,0.00,1.26,8.91,1.46,5.2,0.22
+v1.7,"Sep 21, 6:08 PM","Sep 22, 10:11 AM",0.67,40,33.14,"Restarts the bot as a long-running service, with no logic changes.",370,359,-2.79,0.00,0.00,-2.79,-4.17,-12.6,-0.78
+v1.8,"Sep 22, 10:11 AM","Sep 24, 4:07 AM",1.75,60,52.13,Uses larger orders and raises the cap to $60.,1485,2440,4.63,3.96,2.49,11.08,6.34,12.2,0.45
+v1.9,"Sep 24, 4:07 AM","Sep 29, 8:51 AM",5.20,60,52.83,Adds a soft stop that winds positions down after a losing stretch.,3122,5569,-8.99,9.77,0.00,0.78,0.15,0.3,0.01
+v1.10,"Sep 29, 8:51 AM","Oct 1, 10:16 AM",2.06,60,52.98,Uses larger orders again.,1186,2799,-2.62,5.76,0.00,3.14,1.52,2.9,0.11
+v1.11,"Oct 1, 10:16 AM","Oct 2, 9:32 AM",0.97,60,54.86,"Drops an outside model input, so fair value comes from Kalshi alone.",548,1328,3.08,2.45,0.00,5.53,5.71,10.4,0.42
+v1.12,"Oct 2, 9:32 AM","Oct 4, 7:00 PM",2.39,60,42.24,"Quotes only same-day markets, so nothing is held overnight.",1622,3605,11.37,7.14,0.00,18.51,7.73,18.3,0.51
+v1.12.1,"Oct 4, 7:00 PM; again Oct 14, 11:00 AM","Oct 16, 4:00 AM",6.39,60,38.04,"Adds a small safety fix for wind-downs. Back in use from Oct 14 to Oct 16, after the v1.14 trading changes measured worse, with the rewards test running at full size overnight.",3146,6683,-1.52,11.87,0.00,10.35,1.62,4.3,0.15
+v1.14,"Oct 9, 11:16 AM","Oct 9, 12:40 PM",0.06,60,52.12,"Fixes a few small bugs, reads prices faster, and starts a small test of a way back into the liquidity rewards.",100,201,-5.55,0.48,0.00,-5.07,-86.71,-166.4,-2.53
+v1.14.1,"Oct 9, 12:40 PM","Oct 11, 2:13 PM",2.06,60,41.39,Changes only when the rewards test pulls its orders.,1015,2097,1.44,3.90,0.00,5.34,2.59,6.2,0.25
+v1.14.2,"Oct 11, 2:13 PM","Oct 12, 2:37 PM",1.02,60,44.68,Adds safety rules to the rewards test.,542,1160,5.31,1.88,0.00,7.19,7.07,15.8,0.62
+v1.14.3,"Oct 12, 2:37 PM","Oct 12, 3:13 PM",0.03,60,33.99,Runs the rewards test on one market at a time.,65,126,0.10,0.29,0.00,0.39,15.57,45.8,0.31
+v1.14.4,"Oct 12, 3:13 PM","Oct 14, 11:00 AM",1.82,60,37.46,Keeps the rewards test's orders in place without gaps.,839,1666,-3.81,2.80,0.00,-1.01,-0.56,-1.5,-0.06
+v1.12.2,"Oct 16, 4:00 AM","Oct 18, 11:34 AM",1.83,60,27.06,"Stops trading San Francisco, which lost money on trading in both halves of the record. The overnight rewards test now only uses same-day markets.",552,1075,-4.30,1.35,0.00,-2.95,-1.61,-6.0,-0.27
