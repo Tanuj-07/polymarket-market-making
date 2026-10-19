@@ -1,24 +1,23 @@
 # prediction-market-making
 
-This is a market-making bot that trades on Polymarket US with real money. It has been running since September 5, 2026, and it uses Kalshi's prices for the same markets as its fair value.
+This was a market-making bot that traded on Polymarket US with real money. It ran from September 5 to October 18, 2026, and it used Kalshi's prices for the same markets as its fair value.
 
-It trades the daily high-temperature markets. Each city gets one market a day, split into brackets a couple of degrees wide, and the bracket that holds the day's high pays $1. The bot traded New York, Miami, Chicago, Los Angeles and San Francisco. Since October 18 it trades Los Angeles only.
+It traded the daily high-temperature markets. Each city gets one market a day, split into brackets a couple of degrees wide, and the bracket that holds the day's high pays $1. The bot traded New York, Miami, Chicago, Los Angeles and San Francisco.
 
-The repository has no code, only the results. **They update automatically every day at noon ET**, once the previous day's markets have settled, so everything here is current through yesterday.
+The repository has no code, only the results. The bot was stopped on October 18 (see below) and its last positions settled on October 19, so these results are final and this page no longer updates.
 
-Last update: October 18, 2026, 12:05 PM ET (43 days, September 5 to October 17).
+Final results: 44 days, September 5 to October 18.
 
 ## Returns
 
 | | |
 |---|---|
-| Total return on capital in use | **+207.7%** (+$70.68 on an average of $34.02 in use) |
-| Average daily return | **+4.8%** (net per day over capital in use per day, all 43 days) |
-| Last 7 days | **+0.2% per day** (+$0.46 total, on $35 in use) |
-| Latest version with a full day of data (v1.12.2) | **−6.0% per day** over 1.8 days, Oct 16 to Oct 17 |
-| Version running now | v1.15, since Oct 18, 11:34 AM ET (its results appear here once it has a full settled day) |
-| Days up | 29 of 43 (67.4%) |
-| Days up, trading only | 23 of 43 (53.5%) |
+| Total return on capital in use | **+203.1%** (+$68.64 on an average of $33.80 in use) |
+| Average daily return | **+4.6%** (net per day over capital in use per day, all 44 days) |
+| Last 7 days | **−1.0% per day** (−$2.22 total, on $33 in use) |
+| Last version with a full day of data (v1.12.2) | **−8.0% per day** over 2.3 days, Oct 16 to Oct 18 |
+| Days up | 29 of 44 (65.9%) |
+| Days up, trading only | 23 of 44 (52.3%) |
 | Best / worst day | +$9.05 (+20.7%) on Oct 7 / −$10.62 (−20.7%) on Sep 25 |
 | Worst drawdown | −$10.62 (−20.7% of the capital in use at the time) |
 
@@ -28,59 +27,38 @@ Where it came from:
 
 | | |
 |---|---|
-| Trading | +$7.67 |
-| Maker rebates | +$51.65 |
-| Liquidity rewards (now rare) | +$11.36 |
-| Fills / contracts | 23,421 / 37,525 |
-| Capital the bot can use | $20 now (earlier: $20 from Sep 5 to Sep 14, $40 from Sep 15 to Sep 21, $60 from Sep 22 to Oct 17) |
-| Capital in use | $27 on average under v1.12.2, $34 over all 43 days |
+| Trading | +$4.75 |
+| Maker rebates | +$52.53 |
+| Liquidity rewards (rare after Sep 23) | +$11.36 |
+| Fills / contracts | 23,628 / 37,931 |
+| Capital the bot could use | $60 at the end (earlier: $20 from Sep 5 to Sep 14, $40 from Sep 15 to Sep 21) |
+| Capital in use | $30 on average under v1.12.2, $34 over all 44 days |
 
 ![Capital: the cap and what the bot used](charts/capital.svg)
 
-## The rebate is ending, so the bot trades Los Angeles only
+## Why the bot stopped
 
-Polymarket US changed its fee schedule. From October 19, makers that trade less than $10 million a month no longer get a maker rebate. This bot is far below that line, so its rebate goes to zero.
+Trading was roughly flat: +$4.75 over 44 days. The money came from the maker rebate ($52.53) and, early on, liquidity rewards ($11.36).
 
-The rebate was most of the profit. From September 22 to October 17 the bot collected $51.65 in rebates and lost $2.12 on trading.
+The rewards went first. On September 23 Polymarket cut the daily reward pool for weather markets from $750 to $185, without notice. A side only earns money once 7,500 contracts are resting on it, and after the cut live sides almost never got there, so the bot was paid $11.36 before the cut and nothing after it.
 
-Without the rebate, only trading counts. This chart shows trading profit by city, with rebates and rewards taken out.
+Then the rebate went. From October 19, makers that trade less than $10 million a month no longer get a maker rebate, and this bot was far below that line.
 
-![Trading profit by city, before rebates](charts/city_trading.svg)
-
-| | Trading total | Per day | Daily swing | Worst day | Worst drawdown |
-|---|---:|---:|---:|---:|---:|
-| Los Angeles only | +$27.14 | +$0.63 | $2.18 | −$3.57 | −$3.57 |
-| All five cities | +$7.67 | +$0.18 | $4.52 | −$12.23 | −$16.95 |
-| New York | +$6.85 | +$0.16 | $1.72 | −$4.48 | −$6.53 |
-| Miami | −$1.50 | −$0.03 | $2.26 | −$8.97 | −$10.99 |
-| Chicago | −$9.50 | −$0.22 | $1.68 | −$5.19 | −$12.28 |
-| San Francisco | −$15.31 | −$0.36 | $1.93 | −$5.80 | −$16.44 |
-
-Settled trade days from September 5 to October 17. Daily swing is the standard deviation of daily trading profit.
-
-Los Angeles made more on its own than all five cities together, with less daily swing. San Francisco lost money on trading in both halves of the record and was dropped on October 16.
-
-From October 18 the bot trades Los Angeles only. New York, Miami and Chicago only close out the positions they already hold. The capital cap drops from $60 to $20, and nothing else changes. Order size may go up later, slowly, and only if the results hold at each step.
-
-This is a small operation and it will stay small. In Los Angeles, trading alone has averaged +$0.63 a day. Bigger orders don't buy much more volume, because the bot only gets filled when it holds the best price, and most of the time someone else does. Bigger resting orders also mean bigger hits from better-informed buyers.
-
-The liquidity rewards don't change this. An overnight test aimed at them paid $0.21 for the night, so it was switched off.
+That left only flat trading, so on the afternoon of October 18 I stopped the bot. It closed out what it could, the rest settled the next morning, and it was shut down on October 19.
 
 ## About that return
 
-The percentage return looks suspiciously high, and it is real, but it doesn't scale with size. Every so often a much better-informed buyer shows up. They already know which bracket is mispriced, and they buy a huge number of contracts at the stale price, mostly out of market makers' resting orders. The bigger those orders are, the bigger the hit, and one of those days can wipe out a lot of normal ones.
-
-That is why the size stays small. I think the strategy is already close to its ceiling. Small improvements can still add something, but probably not much. I can't be sure of that, though. It's just how things look right now.
+The percentage return looks suspiciously high, and it is real, but it didn't scale with size. Trading was roughly flat, and the profit came from the maker rebate, which is paid per contract filled. Bigger orders barely added fills, so they barely added rebates.
 
 ## How it works
 
-The bot keeps buy and sell orders resting on both sides of every bracket. It makes money from the spread when both sides fill and from the maker rebate the exchange pays on qualifying fills. Early on it also earned the exchange's liquidity rewards, but Polymarket cut that reward pool on Sep 23 and the bot has rarely qualified since (see the timeline). Kalshi lists the same contracts with deeper books, so the bot takes its fair value from Kalshi instead of predicting anything itself.
+The bot kept buy and sell orders resting on both sides of every bracket. It made money from the spread when both sides filled and from the maker rebate the exchange paid on qualifying fills. Kalshi lists the same contracts with deeper books, so the bot took its fair value from the middle of Kalshi's price for each bracket instead of predicting anything itself. Its quotes were post-only, so 98% of its fills came as the maker, and from October 2 it quoted only the current day's markets.
 
-Most of the losses come from getting picked off by traders who know something before the market does, and much of the version history is about limiting that.
+Each quote was 1 contract at first, 2 from September 22 and 3 from September 29. A bracket could hold at most 2 contracts at first and 4 from September 22, and the bot had a hard cap on capital: $20, then $40 from September 15 and $60 from September 22.
 
-On the risk side, each market has an inventory limit and the bot has a hard cap on capital. Quotes are pulled when Kalshi moves, a dead-man switch cancels everything if the bot stalls, and a soft stop winds positions down after a bad run. A watchdog checks on all of it every few minutes.
+Most of the losses came from getting picked off by traders who knew something before the market did, and much of the version history is about limiting that. Quotes were pulled as soon as Kalshi moved. A separate dead-man switch cancelled every order if the bot went quiet for 3 minutes, and a soft stop wound positions down after a sharp fall in the account ($10 in 24 hours or $8 in 4 hours, at the end). A watchdog checked on all of it every few minutes.
 
-Every change ships as a new version. Before a version goes live, I write down what it should change and how I'll measure it, and each change to the trading logic runs for at least 48 hours before the next one.
+Every change shipped as a new version. Before a version went live, I wrote down what it should change and how I'd measure it, and each change to the trading logic ran for at least 48 hours before the next one.
 
 ## Timeline
 
@@ -89,9 +67,10 @@ Outside events that changed the economics. They are the purple lines on the char
 | Date (ET) | What happened |
 |---|---|
 | Sep 22 | Switched to collecting Polymarket's maker rebate on qualifying fills. |
-| Sep 23 | Polymarket cut the liquidity reward pool for these markets by 75%. The bot has rarely qualified since. |
+| Sep 23 | Polymarket cut the liquidity reward pool for weather markets from $750 to $185 a day. The bot rarely qualified after that. |
 | Oct 9 | Started testing a way to qualify for liquidity rewards again, beginning with tiny orders. |
-| Oct 18 | Switched to trading Los Angeles only, the day before Polymarket's maker rebate ends for small makers. |
+| Oct 18 | Stopped the bot in the afternoon. |
+| Oct 19 | The last positions settled and the bot was shut down. Polymarket's maker rebate for small makers ended the same day. |
 
 ## Charts
 
@@ -124,11 +103,10 @@ Outside events that changed the economics. They are the purple lines on the char
 | v1.14.2 | Oct 11, 2:13 PM | Adds safety rules to the rewards test. | 1.0 | +$7.19 | +$7.07 | $45 | +15.8% | +$5.31 | $1.88 | 1,160 |
 | v1.14.3 | Oct 12, 2:37 PM | Runs the rewards test on one market at a time. | 0.0 | +$0.39 | too short | $34 | too short | +$0.10 | $0.29 | 126 |
 | v1.14.4 | Oct 12, 3:13 PM | Keeps the rewards test's orders in place without gaps. | 1.8 | −$1.01 | −$0.56 | $37 | −1.5% | −$3.81 | $2.80 | 1,666 |
-| v1.12.2 | Oct 16, 4:00 AM | Stops trading San Francisco, which lost money on trading in both halves of the record. The overnight rewards test now only uses same-day markets. | 1.8 | −$2.95 | −$1.61 | $27 | −6.0% | −$4.30 | $1.35 | 1,075 |
+| v1.12.2 | Oct 16, 4:00 AM | Stops trading San Francisco, which lost money on trading in both halves of the record. The overnight rewards test now only uses same-day markets. | 2.3 | −$5.59 | −$2.41 | $30 | −8.0% | −$7.47 | $1.88 | 1,324 |
+| v1.15 | Oct 18, 11:34 AM | The final version. It ran for a few hours on October 18 before the bot was stopped. | 0.2 | +$0.60 | too short | $12 | too short | +$0.25 | $0.35 | 157 |
 
 Versions that ran for less than about 18 hours say "too short" instead of per-day figures and aren't in the chart, since stretching a few hours into a full day isn't meaningful. Return per day is measured against the average capital the bot had in use while that version ran.
-
-Versions were renumbered on October 18. Every version here is 1.x, so v12.1 is now v1.12.1.
 
 ![Net P&L per day by version](charts/versions.svg)
 
@@ -138,66 +116,20 @@ Each city is one daily market on that day's high temperature. These totals inclu
 
 | City | Fills | Contracts | Trading | Rebates | Rewards | Net |
 |---|---:|---:|---:|---:|---:|---:|
-| Chicago | 4,176 | 6,764 | −$9.50 | $10.29 | $2.09 | +$2.88 |
-| Los Angeles | 5,849 | 9,530 | +$27.14 | $11.91 | $0.74 | +$39.79 |
-| Miami | 4,314 | 6,603 | −$1.50 | $9.58 | $0.90 | +$8.98 |
-| New York | 4,852 | 8,016 | +$6.85 | $11.06 | $0.64 | +$18.55 |
+| Chicago | 4,211 | 6,810 | −$10.10 | $10.33 | $2.09 | +$2.32 |
+| Los Angeles | 5,926 | 9,701 | +$25.97 | $12.31 | $0.74 | +$39.02 |
+| Miami | 4,351 | 6,681 | −$3.37 | $9.75 | $0.90 | +$7.27 |
+| New York | 4,910 | 8,128 | +$7.57 | $11.33 | $0.64 | +$19.54 |
 | San Francisco | 4,230 | 6,611 | −$15.31 | $8.81 | $6.99 | +$0.49 |
 
 ![Net P&L by city](charts/series.svg)
 
-## Daily log
-
-| Date | Version | Fills | Contracts | Trading | Rebates | Rewards | Net | In use | Return | Total |
-|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| 2026-10-17 | v1.12.2 | 374 | 716 | −$4.88 | $1.09 | $0.00 | −$3.79 | $32.79 | −11.6% | +$70.68 |
-| 2026-10-16 | v1.12.2 | 203 | 417 | +$2.41 | $0.34 | $0.00 | +$2.75 | $21.27 | +12.9% | +$74.47 |
-| 2026-10-15 | v1.12.1 | 588 | 1,244 | −$6.97 | $2.24 | $0.00 | −$4.73 | $32.39 | −14.6% | +$71.72 |
-| 2026-10-14 | v1.12.1 | 407 | 816 | +$3.25 | $1.49 | $0.00 | +$4.74 | $35.81 | +13.2% | +$76.46 |
-| 2026-10-13 | v1.14.4 | 460 | 893 | −$6.01 | $1.42 | $0.00 | −$4.59 | $38.14 | −12.0% | +$71.71 |
-| 2026-10-12 | v1.14.2 | 653 | 1,322 | +$2.86 | $2.58 | $0.00 | +$5.44 | $43.30 | +12.6% | +$76.30 |
-| 2026-10-11 | v1.14.1 | 495 | 1,056 | −$1.01 | $1.66 | $0.00 | +$0.65 | $42.53 | +1.5% | +$70.86 |
-| 2026-10-10 | v1.14.1 | 396 | 847 | +$1.19 | $1.58 | $0.00 | +$2.77 | $39.96 | +6.9% | +$70.22 |
-| 2026-10-09 | v1.14 | 640 | 1,245 | −$1.49 | $2.37 | $0.00 | +$0.88 | $40.31 | +2.2% | +$67.45 |
-| 2026-10-08 | v1.12.1 | 543 | 1,139 | +$2.54 | $1.64 | $0.00 | +$4.18 | $35.70 | +11.7% | +$66.57 |
-| 2026-10-07 | v1.12.1 | 543 | 1,179 | +$6.60 | $2.45 | $0.00 | +$9.05 | $43.75 | +20.7% | +$62.39 |
-| 2026-10-06 | v1.12.1 | 448 | 1,022 | −$6.58 | $1.73 | $0.00 | −$4.85 | $40.78 | −11.9% | +$53.34 |
-| 2026-10-05 | v1.12.1 | 466 | 1,005 | −$1.10 | $1.75 | $0.00 | +$0.65 | $43.17 | +1.5% | +$58.19 |
-| 2026-10-04 | v1.12 | 587 | 1,271 | +$4.32 | $2.83 | $0.00 | +$7.15 | $38.82 | +18.4% | +$57.53 |
-| 2026-10-03 | v1.12 | 490 | 1,150 | +$2.92 | $1.96 | $0.00 | +$4.88 | $44.36 | +11.0% | +$50.38 |
-| 2026-10-02 | v1.12 | 755 | 1,648 | +$1.32 | $3.16 | $0.00 | +$4.48 | $45.57 | +9.8% | +$45.50 |
-| 2026-10-01 | v1.11 | 570 | 1,395 | +$4.97 | $2.56 | $0.00 | +$7.53 | $50.44 | +14.9% | +$41.03 |
-| 2026-09-30 | v1.10 | 476 | 1,126 | +$2.70 | $2.31 | $0.00 | +$5.01 | $55.01 | +9.1% | +$33.50 |
-| 2026-09-29 | v1.10 | 691 | 1,553 | −$8.10 | $3.16 | $0.00 | −$4.94 | $55.17 | −9.0% | +$28.48 |
-| 2026-09-28 | v1.9 | 636 | 1,144 | −$3.90 | $1.98 | $0.00 | −$1.92 | $54.39 | −3.5% | +$33.43 |
-| 2026-09-27 | v1.9 | 599 | 1,060 | +$5.71 | $1.87 | $0.00 | +$7.58 | $53.44 | +14.2% | +$35.34 |
-| 2026-09-26 | v1.9 | 651 | 1,167 | +$5.45 | $2.18 | $0.00 | +$7.63 | $54.16 | +14.1% | +$27.76 |
-| 2026-09-25 | v1.9 | 546 | 978 | −$12.23 | $1.61 | $0.00 | −$10.62 | $51.33 | −20.7% | +$20.13 |
-| 2026-09-24 | v1.9 | 590 | 1,042 | −$0.21 | $1.84 | $0.00 | +$1.63 | $50.26 | +3.2% | +$30.76 |
-| 2026-09-23 | v1.8 | 900 | 1,474 | −$0.31 | $2.25 | $2.49 | +$4.43 | $52.32 | +8.5% | +$29.13 |
-| 2026-09-22 | v1.8 | 775 | 1,092 | +$4.45 | $1.60 | $0.00 | +$6.05 | $43.32 | +14.0% | +$24.70 |
-| 2026-09-21 | v1.6 | 840 | 815 | −$7.80 | $0.00 | $0.00 | −$7.80 | $33.28 | −23.4% | +$18.65 |
-| 2026-09-20 | v1.6 | 622 | 604 | +$1.11 | $0.00 | $0.00 | +$1.11 | $29.75 | +3.7% | +$26.46 |
-| 2026-09-19 | v1.6 | 731 | 715 | −$0.29 | $0.00 | $0.00 | −$0.29 | $29.24 | −1.0% | +$25.34 |
-| 2026-09-18 | v1.6 | 262 | 254 | +$2.81 | $0.00 | $0.00 | +$2.81 | $20.91 | +13.5% | +$25.63 |
-| 2026-09-17 | v1.6 | 834 | 812 | +$7.44 | $0.00 | $1.26 | +$8.70 | $23.64 | +36.8% | +$22.82 |
-| 2026-09-16 | v1.6 | 696 | 681 | +$2.40 | $0.00 | $0.00 | +$2.40 | $30.77 | +7.8% | +$14.12 |
-| 2026-09-15 | v1.5 | 806 | 752 | −$5.02 | $0.00 | $0.00 | −$5.02 | $28.32 | −17.7% | +$11.72 |
-| 2026-09-14 | v1.3 | 506 | 460 | +$6.10 | $0.00 | $0.00 | +$6.10 | $14.97 | +40.7% | +$16.74 |
-| 2026-09-13 | v1.3 | 496 | 475 | −$1.58 | $0.00 | $0.00 | −$1.58 | $16.19 | −9.7% | +$10.64 |
-| 2026-09-12 | v1.1 | 726 | 683 | +$1.17 | $0.00 | $0.00 | +$1.17 | $15.22 | +7.7% | +$12.22 |
-| 2026-09-11 | v1.1 | 658 | 617 | +$2.83 | $0.00 | $0.00 | +$2.83 | $14.51 | +19.5% | +$11.05 |
-| 2026-09-10 | v1.0 | 737 | 689 | −$1.94 | $0.00 | $1.76 | −$0.18 | $15.76 | −1.2% | +$8.22 |
-| 2026-09-09 | v1.0 | 503 | 463 | +$2.62 | $0.00 | $1.54 | +$4.16 | $14.33 | +29.0% | +$8.40 |
-| 2026-09-08 | v1.0 | 2 | 1 | −$0.06 | $0.00 | $0.00 | −$0.06 | $4.30 | −1.4% | +$4.24 |
-| 2026-09-07 | v1.0 | 237 | 229 | −$3.62 | $0.00 | $0.00 | −$3.62 | $13.59 | −26.7% | +$4.30 |
-| 2026-09-06 | v1.0 | 273 | 264 | +$4.78 | $0.00 | $0.00 | +$4.78 | $13.30 | +35.9% | +$7.93 |
-| 2026-09-05 | v1.0 | 10 | 10 | −$1.16 | $0.00 | $4.31 | +$3.15 | $6.46 | +48.8% | +$3.15 |
+Los Angeles came out best, but over 44 days that could just have been luck.
 
 ## Notes
 
 - The raw data is in [`data/daily.csv`](data/daily.csv), [`data/versions.csv`](data/versions.csv) and [`data/series.csv`](data/series.csv).
-- P&L is booked to the day each trade happened and valued at the official settlement price. Taker fees count against trading. Liquidity rewards are paid per market day, so they're booked to that day. Each day appears the morning after, once it has settled.
-- Returns are measured against the capital the bot actually had in use, not the cap. That is the money in open positions plus resting orders, each order counted at what it would cost if it filled, averaged over the hours the bot was running each day. Most mornings it comes within a few dollars of the cap, until the previous day's markets settle. The cap is $20 now, and the rest of the account sits idle.
-- Each update is checked against the actual account balance before it's published. The last check was off by $0.01, which comes from open positions and rounding.
+- P&L is booked to the day each trade happened and valued at the official settlement price. Taker fees count against trading. Liquidity rewards are paid per market day, so they're booked to that day. Every day here has settled.
+- Returns are measured against the capital the bot actually had in use, not the cap. That is the money in open positions plus resting orders, each order counted at what it would cost if it filled, averaged over the hours the bot was running each day. Most mornings it came within a few dollars of the cap, until the previous day's markets settled. The cap was $60 at the end, and the rest of the account sat idle.
+- The results were checked against the actual account balance. The final check was off by $0.23, which comes from rounding.
 - This repository doesn't contain any code, keys, order data or strategy settings.

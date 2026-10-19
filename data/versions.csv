@@ -18,4 +18,5 @@ v1.14.1,"Oct 9, 12:40 PM","Oct 11, 2:13 PM",2.06,60,41.39,Changes only when the 
 v1.14.2,"Oct 11, 2:13 PM","Oct 12, 2:37 PM",1.02,60,44.68,Adds safety rules to the rewards test.,542,1160,5.31,1.88,0.00,7.19,7.07,15.8,0.62
 v1.14.3,"Oct 12, 2:37 PM","Oct 12, 3:13 PM",0.03,60,33.99,Runs the rewards test on one market at a time.,65,126,0.10,0.29,0.00,0.39,15.57,45.8,0.31
 v1.14.4,"Oct 12, 3:13 PM","Oct 14, 11:00 AM",1.82,60,37.46,Keeps the rewards test's orders in place without gaps.,839,1666,-3.81,2.80,0.00,-1.01,-0.56,-1.5,-0.06
-v1.12.2,"Oct 16, 4:00 AM","Oct 18, 11:34 AM",1.83,60,27.06,"Stops trading San Francisco, which lost money on trading in both halves of the record. The overnight rewards test now only uses same-day markets.",552,1075,-4.30,1.35,0.00,-2.95,-1.61,-6.0,-0.27
+v1.12.2,"Oct 16, 4:00 AM","Oct 18, 11:34 AM",2.32,60,30.18,"Stops trading San Francisco, which lost money on trading in both halves of the record. The overnight rewards test now only uses same-day markets.",690,1324,-7.47,1.88,0.00,-5.59,-2.41,-8.0,-0.42
+v1.15,"Oct 18, 11:34 AM","Oct 18, 4:33 PM",0.21,20,11.92,The final version. It ran for a few hours on October 18 before the bot was stopped.,69,157,0.25,0.35,0.00,0.60,2.87,24.0,0.38
