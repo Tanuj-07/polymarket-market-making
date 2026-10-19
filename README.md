@@ -1,4 +1,4 @@
-# prediction-market-making
+# polymarket-market-making
 
 This was a market-making bot that traded on Polymarket US with real money. It ran from September 5 to October 18, 2026, and it used Kalshi's prices for the same markets as its fair value.
 
